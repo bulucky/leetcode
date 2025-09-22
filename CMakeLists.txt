@@ -10,6 +10,8 @@ include_directories(include)
 file(GLOB SRC_FILES CONFIGURE_DEPENDS
         src/*.cpp 
         src/*.c
+        src/*/*.ppp
+        src/*/*.c
 )
  
 # 遍历列表SRC_FILES所有源文件
