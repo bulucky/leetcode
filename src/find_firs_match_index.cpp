@@ -1,3 +1,4 @@
+#include <chrono>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -52,7 +53,12 @@ int main(int argc, char const* argv[])
     Solution sol;
     std::string haystack = "mississippi", needle = "issip";
 
-    std::cout << sol.strStr(haystack, needle) << std::endl;
+    auto start = std::chrono::high_resolution_clock::now();
+    int ret = sol.strStr(haystack, needle);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto dur = std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+    std::cout << ret << "\n" <<"duration time: " << dur.count() << std::endl;
 
     return 0;
 }

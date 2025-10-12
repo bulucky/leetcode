@@ -1,5 +1,8 @@
+#include <chrono>
 #include <vector>
 #include <iostream>
+
+using namespace std::chrono_literals;
 
 class Solution {
 public:
@@ -20,7 +23,12 @@ int main(int argc, char const* argv[])
 
     std::vector<int> nums = {1,3,5,6};
     static const int target = 7;
-    std::cout << sol.searchInsert(nums, target);
+    auto start = std::chrono::high_resolution_clock::now();
+    int ret = sol.searchInsert(nums, target);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto dur = std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+    std::cout << ret << "\n" <<"duration time: " << dur.count() << std::endl;
 
     return 0;
 }
