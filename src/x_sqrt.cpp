@@ -9,9 +9,10 @@ public:
     */ 
     int mySqrt(int x) {
         double x_k = x;
-        while(x_k*x_k > x) {
+        while(fabs((x_k*x_k) - x) > 1e-2) {
             x_k = (x_k + (x/x_k)) / 2; 
         }
+
         return int(x_k);
     }
 };
