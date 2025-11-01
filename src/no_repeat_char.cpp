@@ -1,35 +1,27 @@
 #include <string>
-#include <vector>
 #include <iostream>
-#include <unordered_map>
+#include <algorithm>
+#include <unordered_set>
 
 class Solution {
 public:
     int lengthOfLongestSubstring(std::string s) {
-        std::unordered_map<char, char> hash_map;
-        std::vector<int> sizes;
-
-        char pre_char = '\0';
-        for(int i = 0; i < s.size(); ++i) {
-            if(hash_map.find(s[i]) == hash_map.end()) {
-                hash_map.insert({s[i], s[i]});
-                pre_char = s[i];
-            }else {
-                sizes.emplace_back(hash_map.size());
-                hash_map.clear();
-                if(pre_char == s[i]) {
-                    hash_map.insert({s[i], s[i]});
-                }
+        std::unordered_set<char> window;
+        int length = 0;
+        int res = 0;
+        
+        for(int left = 0, right = 0; right < s.size(); ++right) {
+            while(left < right && window.count(s[right])) {
+                window.erase(s[left]);
+                ++left;
+                --length;
             }
+            window.insert(s[right]);
+            ++length;
+            res = std::max(res, length);
         }
-        sizes.emplace_back(hash_map.size());
-
-        int max_size = sizes[0];
-        for(const auto& size : sizes) {
-            if(size > max_size) max_size = size;
-        }
-
-        return max_size;
+        
+        return res;
     }
 };
 
@@ -37,10 +29,11 @@ int main(int argc, char const* argv[])
 {
     Solution sol;
 
-    std::string s = "dvdf";
+    std::string s = "pwwkew";
     int res = sol.lengthOfLongestSubstring(s);
 
     std::cout << res << std::endl;
 
     return 0;
 }
+
