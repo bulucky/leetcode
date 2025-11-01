@@ -8,12 +8,12 @@ include_directories(include)
 
 # 递归遍历src目录找到所有源文件.cpp .c存入列表SRC_FILES
 file(GLOB SRC_FILES CONFIGURE_DEPENDS
-        src/*.cpp 
+        src/*.cpp
         src/*.c
         src/*/*.ppp
         src/*/*.c
 )
- 
+
 # 遍历列表SRC_FILES所有源文件
 foreach(src_file IN LISTS SRC_FILES)
     # 从路径中提取文件名（去掉目录和扩展名）

@@ -48,7 +48,7 @@ public:
                 }
             }
             l1_temp = l1; l2_temp = l2;
-            
+
 
         }else {
             l = l2;
@@ -69,4 +69,8 @@ public:
     }
 };
 
+int main(int argc, char const* argv[])
+{
 
+    return 0;
+}
