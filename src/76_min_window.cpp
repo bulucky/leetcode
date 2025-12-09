@@ -1,40 +1,40 @@
 #include <chrono>
-#include <string>
 #include <iostream>
+#include <string>
 #include <unordered_map>
 
 class Solution {
 public:
     // liudahu
-    std::string minWindow(std::string& s, std::string& t) {
-        if(!s.size() || !t.size()) {
+    std::string minWindow(std::string &s, std::string &t) {
+        if (!s.size() || !t.size()) {
             return "";
         }
         std::unordered_map<char, int> match_c;
         std::unordered_map<char, int> win_c;
-        for(const auto& c : t) {
+        for (const auto &c : t) {
             ++match_c[c];
         }
         int l = 0, r = 0;
         int start = 0, sub_len = INT_MAX;
         int match_size = match_c.size();
         int win_size = 0;
-
-        while(r < s.size()) {
-            if(match_c.count(s[r])) {
+        
+        while (r < s.size()) {
+            if (match_c.count(s[r])) {
                 ++win_c[s[r]];
-                if(match_c[s[r]] == win_c[s[r]]) {
+                if (match_c[s[r]] == win_c[s[r]]) {
                     ++win_size;
                 }
             }
-            while(win_size == match_size) {
-                if(r-l+1 < sub_len) {
-                    sub_len = r-l+1;
+            while (win_size == match_size) {
+                if (r - l + 1 < sub_len) {
+                    sub_len = r - l + 1;
                     start = l;
                 }
-                if(match_c.count(s[l])) {
+                if (match_c.count(s[l])) {
                     --win_c[s[l]];
-                    if(match_c[s[l]] > win_c[s[l]]) {
+                    if (match_c[s[l]] > win_c[s[l]]) {
                         --win_size;
                     }
                 }
@@ -43,13 +43,12 @@ public:
             ++r;
         }
 
-        if(sub_len == INT_MAX) return "";
+        if (sub_len == INT_MAX) return "";
         return s.substr(start, sub_len);
     }
 };
 
-int main(int argc, char const* argv[])
-{
+int main(int argc, char const *argv[]) {
     Solution sol;
     std::string s = "aa";
     std::string t = "aa";
@@ -110,7 +109,7 @@ int main(int argc, char const* argv[])
 //                     --win_size;
 //                     ++l;
 //                     break;
-//                 } 
+//                 }
 //             }
 //             ++l;
 //         }
