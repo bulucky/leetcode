@@ -3,5 +3,5 @@
 # build
 build/
 #zed
-.cache
-.zed
+.cache/
+.zed/

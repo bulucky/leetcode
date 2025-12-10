@@ -10,6 +10,7 @@ public:
         if (!s.size() || !t.size()) {
             return "";
         }
+
         std::unordered_map<char, int> match_c;
         std::unordered_map<char, int> win_c;
         for (const auto &c : t) {
@@ -19,7 +20,7 @@ public:
         int start = 0, sub_len = INT_MAX;
         int match_size = match_c.size();
         int win_size = 0;
-        
+
         while (r < s.size()) {
             if (match_c.count(s[r])) {
                 ++win_c[s[r]];
@@ -52,6 +53,7 @@ int main(int argc, char const *argv[]) {
     Solution sol;
     std::string s = "aa";
     std::string t = "aa";
+
     auto start_time = std::chrono::steady_clock::now();
     std::string res = sol.minWindow(s, t);
     auto end_time = std::chrono::steady_clock::now();
