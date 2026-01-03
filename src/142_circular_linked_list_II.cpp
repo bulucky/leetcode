@@ -3,22 +3,30 @@
 
 class Solution {
 public:
-    bool hasCycle(ListNode* head) {
-        ListNode* circul = nullptr;
-        std::unordered_map<ListNode*, int> node_map;
+    // liudahu
+    ListNode* detectCycle(ListNode* head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
 
-        while (head) {
-            ++node_map[head];
+        while (fast) {
+            slow = slow->next;
+            if (!fast->next)
+                return nullptr;
+            else
+                fast = fast->next->next;
 
-            if (node_map[head] == 2) {
-                circul = head;
-                break;
-            }
-
-            head = head->next;
+            if (fast == slow) break;
         }
 
-        return circul;
+        if (fast != slow) return nullptr;
+
+        fast = head;
+        while (fast != slow) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+
+        return fast;
     }
 };
 
@@ -39,3 +47,21 @@ int main(int argc, char const* argv[]) {
 
     return 0;
 }
+
+// bool hasCycle(ListNode* head) {
+//     ListNode* circul = nullptr;
+//     std::unordered_map<ListNode*, int> node_map;
+
+//     while (head) {
+//         ++node_map[head];
+
+//         if (node_map[head] == 2) {
+//             circul = head;
+//             break;
+//         }
+
+//         head = head->next;
+//     }
+
+//     return circul;
+// }
