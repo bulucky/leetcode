@@ -81,5 +81,18 @@ int main(int argc, char const* argv[]) {
         std::cout << res->val << "\n";
         res = res->next;
     }
+
+    delete a1;
+    delete a2;
+    delete a3;
+    delete a4;
+    delete a5;
+    delete a6;
+    delete a7;
+    delete b1;
+    delete b2;
+    delete b3;
+    delete b4;
+    
     return 0;
 }
