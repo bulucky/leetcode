@@ -28,5 +28,7 @@ int main(int argc, char const* argv[]) {
 
     std::cout << res << "\n";
 
+    delete sol;
+
     return 0;
 }
