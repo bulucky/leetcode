@@ -93,6 +93,6 @@ int main(int argc, char const* argv[]) {
     delete b2;
     delete b3;
     delete b4;
-    
+
     return 0;
 }
