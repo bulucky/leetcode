@@ -26,6 +26,7 @@ public:
             }
         }
 
+
         return false;
     }
 };
@@ -35,7 +36,7 @@ int main(int argc, char const* argv[]) {
     std::vector<std::vector<int>> matrix = {{1, 3, 5, 7},
                                             {10, 11, 16, 20},
                                             {23, 30, 34, 60}};
-    
+
     bool res = sol.searchMatrix(matrix, 3);
     std::cout << res << "\n";
 
